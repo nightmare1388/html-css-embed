@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiteZo - Order Delicious Food Online</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -67,9 +68,38 @@
             background: linear-gradient(90deg, var(--primary), var(--secondary));
         }
         
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 20px;
+        }
         
+        .header::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
         
+        .header h1 {
+            color: var(--primary);
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            letter-spacing: 1px;
+        }
         
+        .header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
         
         .btn {
             display: inline-flex;
@@ -172,9 +202,34 @@
             box-shadow: none;
         }
         
+        .section {
+            background: var(--lighter);
+            padding: 25px;
+            border-radius: var(--radius);
+            margin-bottom: 25px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--light-gray);
+            transition: var(--transition);
+        }
         
+        .section:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-2px);
+        }
         
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
         
+        .section-title i {
+            font-size: 1.3em;
+        }
         
         .food-item {
             background: var(--lighter);
@@ -442,11 +497,14 @@
         /* Animations */
         @keyframes pulse {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 87, 34, 0.7); }
-          70% { transform: scale(1.05); box-shadow: 0 0 0 12px rgba(255, 87, 34, 0); }
+70% { transform: scale(1.05); box-shadow: 0 0 0 12px rgba(255, 87, 34, 0); }
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 87, 34, 0); }
         }
         
-        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
         
         @keyframes fadeIn {
@@ -457,7 +515,10 @@
         .pulse {
             animation: pulse 2s infinite;
         }
-    
+        
+        .float {
+            animation: float 4s ease-in-out infinite;
+        }
         
         .fade-in {
             animation: fadeIn 0.6s ease-out forwards;
@@ -479,8 +540,96 @@
             font-size: 14px;
             margin-top: 8px;
             font-weight: 500;
-        } 
+        }
         
+        .info-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+        
+        .info-badge.secondary {
+            background: var(--secondary);
+        }
+        
+        .info-badge.accent {
+            background: var(--accent);
+            color: var(--dark);
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .feature-card {
+            background: var(--lighter);
+            padding: 15px;
+            border-radius: var(--radius-sm);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 1px solid var(--light-gray);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary-light);
+        }
+        
+        .feature-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .feature-card h4 {
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .feature-card p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        .coupon-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .coupon-container input {
+            flex: 1;
+        }
+        
+        .coupon-container button {
+            white-space: nowrap;
+        }
+        
+        .coupon-banner {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 15px;
+            border-radius: var(--radius-sm);
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+        }
+        
+        .coupon-banner i {
+            margin-right: 10px;
+        }
         
         .food-category-tabs {
             display: flex;
@@ -535,8 +684,29 @@
             to { transform: rotate(360deg); }
         }
         
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 100;
+            transition: var(--transition);
+            animation: float 3s ease-in-out infinite;
+        }
         
-    
+        .floating-whatsapp:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
         
         .food-tag {
             display: inline-block;
@@ -569,7 +739,52 @@
             color: #1565C0;
         }
         
-        .
+        .timer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: var(--darker);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .timer-badge i {
+            color: var(--accent);
+        }
+        
+        .delivery-time {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: var(--light);
+            border-radius: var(--radius-sm);
+        }
+        
+        .delivery-time i {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .delivery-time div {
+            flex: 1;
+        }
+        
+        .delivery-time h4 {
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .delivery-time p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
         @media (max-width: 768px) {
             .container {
                 padding: 20px;
@@ -592,10 +807,39 @@
             .location-container button {
                 width: 100%;
             }
-            </div>
+            
+            .radio-group {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
         
-    
-        
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+                padding: 14px;
+            }
+            
+            .coupon-container {
+                flex-direction: column;
+            }
+            
+            .coupon-container button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
         <!-- Order Button -->
         <div id="orderButton" style="text-align: center; margin: 30px 0;">
             <button onclick="showOrderForm()" class="btn pulse">
@@ -690,14 +934,14 @@
                             </div>
                         </div>
                         
-                        <!-- Cheesy Paneer Treat Pizza -->
+                        <!-- Margherita Pizza -->
                         <div class="food-item">
-                            <img src="https://i.ibb.co/jZs8rY3r/images-70.jpg" alt="Cheesy Paneer Treat Pizza">
+                            <img src="https://i.ibb.co/4jV0vXw/margherita-pizza-239581-0e8.jpg" alt="Margherita Pizza">
                             <div class="food-details">
-                                <div class="food-name">Cheesy Paneer Treat Pizza <span class="food-tag veg">VEG</span></div>
-                                <div class="food-price">Small: ₹179 | Medium: ₹229 | Large: ₹279</div>
+                                <div class="food-name">Margherita Pizza <span class="food-tag veg">VEG</span></div>
+                                <div class="food-price">Small: ₹129 | Medium: ₹179 | Large: ₹229</div>
                                 <div class="food-options">
-                                    <select class="pizza-size form-control" data-item="Cheesy Paneer Treat Pizza">
+                                    <select class="pizza-size form-control" data-item="Margherita Pizza">
                                         <option value="">Select size</option>
                                         <option value="Small">Small</option>
                                         <option value="Medium">Medium</option>
@@ -709,70 +953,74 @@
                         </div>
                     </div>
                     
-                    <!-- Momo Section -->
+                    <!-- Momos Section -->
                     <div id="momo" class="food-category-content">
                         <!-- Steamed Veg Momos -->
                         <div class="food-item">
-                            <img src="https://i.ibb.co/d0pL6SfK/download-11.jpg" alt="Steamed Veg Momos">
+                            <img src="https://i.ibb.co/9V0x5Yx/veg-momos-239581-0e8.jpg" alt="Steamed Veg Momos">
                             <div class="food-details">
                                 <div class="food-name">Steamed Veg Momos <span class="food-tag veg">VEG</span> <span class="food-tag best-seller">BEST SELLER</span></div>
-                                <div class="food-price">Half plate (4 momos): ₹60 | Full plate (8 momos): ₹120</div>
+                                <div class="food-price">6 pcs: ₹59 | 12 pcs: ₹99 | 18 pcs: ₹139</div>
                                 <div class="food-options">
-                                    <select class="momo-plate form-control" data-item="Steamed Veg Momos">
-                                        <option value="">Select plate</option>
-                                        <option value="Half plate">Half plate</option>
-                                        <option value="Full plate">Full plate</option>
+                                    <select class="momo-size form-control" data-item="Steamed Veg Momos">
+                                        <option value="">Select quantity</option>
+                                        <option value="6 pcs">6 pcs</option>
+                                        <option value="12 pcs">12 pcs</option>
+                                        <option value="18 pcs">18 pcs</option>
                                     </select>
                                     <input type="number" min="1" class="momo-quantity form-control" placeholder="Qty">
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- Spicy Chicken Momos -->
+                        <!-- Fried Chicken Momos -->
                         <div class="food-item">
-                            <img src="https://i.ibb.co/XNwWfw4/download-12.jpg" alt="Spicy Chicken Momos">
+                            <img src="https://i.ibb.co/3YhQx3Z/chicken-momos-239581-0e8.jpg" alt="Fried Chicken Momos">
                             <div class="food-details">
-                                <div class="food-name">Spicy Chicken Momos <span class="food-tag non-veg">NON-VEG</span> <span class="food-tag spicy">SPICY</span></div>
-                                <div class="food-price">Half plate (4 momos): ₹99 | Full plate (8 momos): ₹198</div>
+                                <div class="food-name">Fried Chicken Momos <span class="food-tag non-veg">NON-VEG</span></div>
+                                <div class="food-price">6 pcs: ₹79 | 12 pcs: ₹129 | 18 pcs: ₹179</div>
                                 <div class="food-options">
-                                    <select class="momo-plate form-control" data-item="Spicy Chicken Momos">
-                                        <option value="">Select plate</option>
-                                        <option value="Half plate">Half plate</option>
-                                        <option value="Full plate">Full plate</option>
+                                    <select class="momo-size form-control" data-item="Fried Chicken Momos">
+                                        <option value="">Select quantity</option>
+                                        <option value="6 pcs">6 pcs</option>
+                                        <option value="12 pcs">12 pcs</option>
+                                        <option value="18 pcs">18 pcs</option>
                                     </select>
                                     <input type="number" min="1" class="momo-quantity form-control" placeholder="Qty">
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- Egg Burst Momos -->
+                        <!-- Tandoori Momos -->
                         <div class="food-item">
-                            <img src="https://i.ibb.co/PZ25ZpDF/images-71.jpg" alt="Egg Burst Momos">
+                            <img src="https://i.ibb.co/0jJQ1Z0/tandoori-momos-239581-0e8.jpg" alt="Tandoori Momos">
                             <div class="food-details">
-                                <div class="food-name">Egg Burst Momos <span class="food-tag non-veg">NON-VEG</span></div>
-                                <div class="food-price">Half plate (4 momos): ₹79 | Full plate (8 momos): ₹158</div>
+                                <div class="food-name">Tandoori Momos <span class="food-tag veg">VEG</span> <span class="food-tag spicy">SPICY</span></div>
+                                <div class="food-price">6 pcs: ₹69 | 12 pcs: ₹119 | 18 pcs: ₹159</div>
                                 <div class="food-options">
-                                    <select class="momo-plate form-control" data-item="Egg Burst Momos">
-                                        <option value="">Select plate</option>
-                                        <option value="Half plate">Half plate</option>
-                                        <option value="Full plate">Full plate</option>
+                                    <select class="momo-size form-control" data-item="Tandoori Momos">
+                                        <option value="">Select quantity</option>
+                                        <option value="6 pcs">6 pcs</option>
+                                        <option value="12 pcs">12 pcs</option>
+                                        <option value="18 pcs">18 pcs</option>
                                     </select>
                                     <input type="number" min="1" class="momo-quantity form-control" placeholder="Qty">
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- Paneer Stuffed Momos -->
+                        <!-- Cheese Corn Momos -->
                         <div class="food-item">
-                            <img src="https://i.ibb.co/359tvW6Q/images-72.jpg" alt="Paneer Stuffed Momos">
+                            <img src="https://i.ibb.co/4jV0vXw/cheese-corn-momos-239581-0e8.jpg" alt="Cheese Corn Momos">
                             <div class="food-details">
-                                <div class="food-name">Paneer Stuffed Momos <span class="food-tag veg">VEG</span></div>
-                                <div class="food-price">Half plate (4 momos): ₹89 | Full plate (8 momos): ₹178</div>
+                                <div class="food-name">Cheese Corn Momos <span class="food-tag veg">VEG</span></div>
+                                <div class="food-price">6 pcs: ₹89 | 12 pcs: ₹149 | 18 pcs: ₹199</div>
                                 <div class="food-options">
-                                    <select class="momo-plate form-control" data-item="Paneer Stuffed Momos">
-                                        <option value="">Select plate</option>
-                                        <option value="Half plate">Half plate</option>
-                                        <option value="Full plate">Full plate</option>
+                                    <select class="momo-size form-control" data-item="Cheese Corn Momos">
+                                        <option value="">Select quantity</option>
+                                        <option value="6 pcs">6 pcs</option>
+                                        <option value="12 pcs">12 pcs</option>
+                                        <option value="18 pcs">18 pcs</option>
                                     </select>
                                     <input type="number" min="1" class="momo-quantity form-control" placeholder="Qty">
                                 </div>
@@ -782,50 +1030,70 @@
                     
                     <!-- Chowmein Section -->
                     <div id="chowmein" class="food-category-content">
-                        <!-- Street-Style Veg Chowmein -->
+                        <!-- Veg Chowmein -->
                         <div class="food-item">
-                            <img src="https://i.ibb.co/2X54ZdP/images-73.jpg" alt="Street-Style Veg Chowmein">
+                            <img src="https://i.ibb.co/0jJQ1Z0/veg-chowmein-239581-0e8.jpg" alt="Veg Chowmein">
                             <div class="food-details">
-                                <div class="food-name">Street-Style Veg Chowmein <span class="food-tag veg">VEG</span></div>
-                                <div class="food-price">Full plate: ₹59</div>
+                                <div class="food-name">Veg Chowmein <span class="food-tag veg">VEG</span></div>
+                                <div class="food-price">Half: ₹59 | Full: ₹99</div>
                                 <div class="food-options">
-                                    <input type="number" min="1" class="chowmein-quantity form-control" placeholder="Qty" data-item="Street-Style Veg Chowmein">
+                                    <select class="chowmein-size form-control" data-item="Veg Chowmein">
+                                        <option value="">Select size</option>
+                                        <option value="Half">Half</option>
+                                        <option value="Full">Full</option>
+                                    </select>
+                                    <input type="number" min="1" class="chowmein-quantity form-control" placeholder="Qty">
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- Cheesy Paneer Chowmein -->
+                        <!-- Chicken Chowmein -->
                         <div class="food-item">
-                            <img src="https://i.ibb.co/wNCg7rJ4/images-74.jpg" alt="Cheesy Paneer Chowmein">
+                            <img src="https://i.ibb.co/4jV0vXw/chicken-chowmein-239581-0e8.jpg" alt="Chicken Chowmein">
                             <div class="food-details">
-                                <div class="food-name">Cheesy Paneer Chowmein <span class="food-tag veg">VEG</span></div>
-                                <div class="food-price">Full plate: ₹79</div>
+                                <div class="food-name">Chicken Chowmein <span class="food-tag non-veg">NON-VEG</span> <span class="food-tag best-seller">BEST SELLER</span></div>
+                                <div class="food-price">Half: ₹79 | Full: ₹129</div>
                                 <div class="food-options">
-                                    <input type="number" min="1" class="chowmein-quantity form-control" placeholder="Qty" data-item="Cheesy Paneer Chowmein">
+                                    <select class="chowmein-size form-control" data-item="Chicken Chowmein">
+                                        <option value="">Select size</option>
+                                        <option value="Half">Half</option>
+                                        <option value="Full">Full</option>
+                                    </select>
+                                    <input type="number" min="1" class="chowmein-quantity form-control" placeholder="Qty">
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- Egg Fusion Chowmein -->
+                        <!-- Schezwan Chowmein -->
                         <div class="food-item">
-                            <img src="https://i.ibb.co/KcjxsYk1/download-13.jpg" alt="Egg Fusion Chowmein">
+                            <img src="https://i.ibb.co/9V0x5Yx/schezwan-chowmein-239581-0e8.jpg" alt="Schezwan Chowmein">
                             <div class="food-details">
-                                <div class="food-name">Egg Fusion Chowmein <span class="food-tag non-veg">NON-VEG</span></div>
-                                <div class="food-price">Full plate: ₹69</div>
+                                <div class="food-name">Schezwan Chowmein <span class="food-tag veg">VEG</span> <span class="food-tag spicy">SPICY</span></div>
+                                <div class="food-price">Half: ₹69 | Full: ₹119</div>
                                 <div class="food-options">
-                                    <input type="number" min="1" class="chowmein-quantity form-control" placeholder="Qty" data-item="Egg Fusion Chowmein">
+                                    <select class="chowmein-size form-control" data-item="Schezwan Chowmein">
+                                        <option value="">Select size</option>
+                                        <option value="Half">Half</option>
+                                        <option value="Full">Full</option>
+                                    </select>
+                                    <input type="number" min="1" class="chowmein-quantity form-control" placeholder="Qty">
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- Desi Chicken Chowmein -->
+                        <!-- Egg Chowmein -->
                         <div class="food-item">
-                            <img src="https://i.ibb.co/6JTyqWcp/images-75.jpg" alt="Desi Chicken Chowmein">
+                            <img src="https://i.ibb.co/3YhQx3Z/egg-chowmein-239581-0e8.jpg" alt="Egg Chowmein">
                             <div class="food-details">
-                                <div class="food-name">Desi Chicken Chowmein <span class="food-tag non-veg">NON-VEG</span> <span class="food-tag spicy">SPICY</span></div>
-                                <div class="food-price">Full plate: ₹89</div>
+                                <div class="food-name">Egg Chowmein <span class="food-tag non-veg">NON-VEG</span></div>
+                                <div class="food-price">Half: ₹89 | Full: ₹149</div>
                                 <div class="food-options">
-                                    <input type="number" min="1" class="chowmein-quantity form-control" placeholder="Qty" data-item="Desi Chicken Chowmein">
+                                    <select class="chowmein-size form-control" data-item="Egg Chowmein">
+                                        <option value="">Select size</option>
+                                        <option value="Half">Half</option>
+                                        <option value="Full">Full</option>
+                                    </select>
+                                    <input type="number" min="1" class="chowmein-quantity form-control" placeholder="Qty">
                                 </div>
                             </div>
                         </div>
@@ -833,755 +1101,545 @@
                     
                     <!-- Rice & Rolls Section -->
                     <div id="rice-rolls" class="food-category-content">
-                        <!-- Hot Chicken Fried Rice -->
+                        <!-- Veg Fried Rice -->
                         <div class="food-item">
-                            <img src="https://i.ibb.co/XkNSLn8Y/download-14.jpg" alt="Hot Chicken Fried Rice">
+                            <img src="https://i.ibb.co/0jJQ1Z0/veg-fried-rice-239581-0e8.jpg" alt="Veg Fried Rice">
                             <div class="food-details">
-                                <div class="food-name">Hot Chicken Fried Rice (300g) <span class="food-tag non-veg">NON-VEG</span> <span class="food-tag spicy">SPICY</span></div>
-                                <div class="food-price">₹120</div>
+                                <div class="food-name">Veg Fried Rice <span class="food-tag veg">VEG</span></div>
+                                <div class="food-price">Half: ₹59 | Full: ₹99</div>
                                 <div class="food-options">
-                                    <input type="number" min="1" class="rice-quantity form-control" placeholder="Qty" data-item="Hot Chicken Fried Rice">
+                                    <select class="rice-size form-control" data-item="Veg Fried Rice">
+                                        <option value="">Select size</option>
+                                        <option value="Half">Half</option>
+                                        <option value="Full">Full</option>
+                                    </select>
+                                    <input type="number" min="1" class="rice-quantity form-control" placeholder="Qty">
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- BiteZo Special Burger -->
+                        <!-- Chicken Fried Rice -->
                         <div class="food-item">
-                            <img src="https://i.ibb.co/NdXt11N9/images-76.jpg" alt="BiteZo Special Burger">
+                            <img src="https://i.ibb.co/4jV0vXw/chicken-fried-rice-239581-0e8.jpg" alt="Chicken Fried Rice">
                             <div class="food-details">
-                                <div class="food-name">BiteZo Special Burger <span class="food-tag veg">VEG</span> <span class="food-tag best-seller">BEST SELLER</span></div>
-                                <div class="food-price">₹59</div>
+                                <div class="food-name">Chicken Fried Rice <span class="food-tag non-veg">NON-VEG</span></div>
+                                <div class="food-price">Half: ₹79 | Full: ₹129</div>
                                 <div class="food-options">
-                                    <input type="number" min="1" class="burger-quantity form-control" placeholder="Qty" data-item="BiteZo Special Burger">
+                                    <select class="rice-size form-control" data-item="Chicken Fried Rice">
+                                        <option value="">Select size</option>
+                                        <option value="Half">Half</option>
+                                        <option value="Full">Full</option>
+                                    </select>
+                                    <input type="number" min="1" class="rice-quantity form-control" placeholder="Qty">
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- Crunchy Veg Roll -->
+                        <!-- Egg Roll -->
                         <div class="food-item">
-                            <img src="https://i.ibb.co/0VpPPx7F/images-77.jpg" alt="Crunchy Veg Roll">
+                            <img src="https://i.ibb.co/3YhQx3Z/egg-roll-239581-0e8.jpg" alt="Egg Roll">
                             <div class="food-details">
-                                <div class="food-name">Crunchy Veg Roll <span class="food-tag veg">VEG</span></div>
-                                <div class="food-price">₹40 (min 2)</div>
+                                <div class="food-name">Egg Roll <span class="food-tag non-veg">NON-VEG</span> <span class="food-tag best-seller">BEST SELLER</span></div>
+                                <div class="food-price">Single: ₹49 | Double: ₹79</div>
                                 <div class="food-options">
-                                    <input type="number" min="2" class="roll-quantity form-control" placeholder="Qty" data-item="Crunchy Veg Roll">
+                                    <select class="roll-size form-control" data-item="Egg Roll">
+                                        <option value="">Select size</option>
+                                        <option value="Single">Single</option>
+                                        <option value="Double">Double</option>
+                                    </select>
+                                    <input type="number" min="1" class="roll-quantity form-control" placeholder="Qty">
                                 </div>
                             </div>
                         </div>
                         
-                        <!-- Spicy Chicken Roll -->
+                        <!-- Chicken Roll -->
                         <div class="food-item">
-                            <img src="https://i.ibb.co/RWk3zdg/images-78.jpg" alt="Spicy Chicken Roll">
+                            <img src="https://i.ibb.co/9V0x5Yx/chicken-roll-239581-0e8.jpg" alt="Chicken Roll">
                             <div class="food-details">
-                                <div class="food-name">Spicy Chicken Roll <span class="food-tag non-veg">NON-VEG</span> <span class="food-tag spicy">SPICY</span></div>
-                                <div class="food-price">₹69 (min 2)</div>
+                                <div class="food-name">Chicken Roll <span class="food-tag non-veg">NON-VEG</span></div>
+                                <div class="food-price">Single: ₹69 | Double: ₹119</div>
                                 <div class="food-options">
-                                    <input type="number" min="2" class="roll-quantity form-control" placeholder="Qty" data-item="Spicy Chicken Roll">
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Masala Egg Roll -->
-                        <div class="food-item">
-                            <img src="https://i.ibb.co/Kz9GyVGB/images-79.jpg" alt="Masala Egg Roll">
-                            <div class="food-details">
-                                <div class="food-name">Masala Egg Roll <span class="food-tag non-veg">NON-VEG</span></div>
-                                <div class="food-price">₹49 (min 2)</div>
-                                <div class="food-options">
-                                    <input type="number" min="2" class="roll-quantity form-control" placeholder="Qty" data-item="Masala Egg Roll">
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Paneer Wrap Delight -->
-                        <div class="food-item">
-                            <img src="https://i.ibb.co/fdcppCdb/download-15.jpg" alt="Paneer Wrap Delight">
-                            <div class="food-details">
-                                <div class="food-name">Paneer Wrap Delight <span class="food-tag veg">VEG</span></div>
-                                <div class="food-price">₹59 (min 2)</div>
-                                <div class="food-options">
-                                    <input type="number" min="2" class="roll-quantity form-control" placeholder="Qty" data-item="Paneer Wrap Delight">
+                                    <select class="roll-size form-control" data-item="Chicken Roll">
+                                        <option value="">Select size</option>
+                                        <option value="Single">Single</option>
+                                        <option value="Double">Double</option>
+                                    </select>
+                                    <input type="number" min="1" class="roll-quantity form-control" placeholder="Qty">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
+                
                 <!-- Customer Details -->
-                <div class="form-group">
-                    <label>Full name: <span class="info-badge">required</span></label>
-                    <input type="text" required class="form-control" id="customerName" placeholder="Enter your full name">
-                </div>
-
-                <div class="form-group">
-                    <label>Phone no: <span class="info-badge">required</span></label>
-                    <input type="tel" required class="form-control" id="customerPhone" placeholder="Enter your phone number">
-                </div>
-
-                <div class="form-group">
-                    <label>Choose location: <span class="info-badge">required</span></label>
-                    <div class="location-container">
-                        <input type="text" id="customerLocation" placeholder="Enter your full address" required class="form-control">
-                        <button type="button" onclick="getLocation()" class="btn btn-sm">
-                            <i class="fas fa-location-arrow"></i> Get GPS Location
-                        </button>
+                <div class="section">
+                    <h3 class="section-title"><i class="fas fa-user"></i> Your Details</h3>
+                    
+                    <div class="form-group">
+                        <label for="name">Full Name <span class="error" id="nameError"></span></label>
+                        <input type="text" id="name" class="form-control" placeholder="Enter your full name" required>
                     </div>
-                    <div id="locationError" class="error hidden"></div>
-                    <div id="locationSuccess" class="success hidden"></div>
-                </div>
-
-                <div class="form-group">
-                    <label>How did you hear about us? (optional)</label>
-                    <select class="form-control">
-                        <option value="">Select option</option>
-                        <option value="Banner/Poster">Banner/Poster 📋</option>
-                        <option value="From peoples">From peoples 🙋</option>
-                        <option value="Instagram/Facebook">Instagram/Facebook</option>
-                        <option value="Youtube">Youtube 📺</option>
-                        <option value="Other">Other ♾️</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Email address (optional)</label>
-                    <input type="email" class="form-control" placeholder="Enter your email">
-                </div>
-
-                <div class="form-group">
-                    <label>Have a coupon code?</label>
-                    <div class="coupon-container">
-                        <input type="text" id="couponCode" placeholder="Enter coupon code" class="form-control">
-                        <button type="button" onclick="validateCouponCode()" class="btn btn-sm btn-accent">
-                            <i class="fas fa-check"></i> Apply
-                        </button>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number <span class="error" id="phoneError"></span></label>
+                        <input type="tel" id="phone" class="form-control" placeholder="Enter your 10-digit phone number" required>
                     </div>
-                    <div id="couponMessage" class="hidden"></div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email (Optional)</label>
+                        <input type="email" id="email" class="form-control" placeholder="Enter your email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Delivery Address <span class="error" id="addressError"></span></label>
+                        <textarea id="address" class="form-control" rows="3" placeholder="Enter your complete delivery address with landmarks" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="instructions">Special Instructions (Optional)</label>
+                        <textarea id="instructions" class="form-control" rows="2" placeholder="Any special instructions for delivery?"></textarea>
+                    </div>
                 </div>
-
-                <div class="form-group">
-                    <label>Choose payment method:</label>
+                
+                <!-- Payment Method -->
+                <div class="section">
+                    <h3 class="section-title"><i class="fas fa-credit-card"></i> Payment Method</h3>
+                    
                     <div class="radio-group">
                         <label class="radio-option">
-                            <input type="radio" name="payment" value="COD" checked> 
-                            <i class="fas fa-money-bill-wave"></i> Cash on delivery (COD)
+                            <input type="radio" name="payment" value="Cash on Delivery" checked>
+                            Cash on Delivery
                         </label>
                         <label class="radio-option">
-                            <input type="radio" name="payment" value="Paytm"> 
-                            <i class="fas fa-wallet"></i> Paytm
+                            <input type="radio" name="payment" value="UPI Payment">
+                            UPI Payment
                         </label>
                         <label class="radio-option">
-                            <input type="radio" name="payment" value="Gpay"> 
-                            <i class="fab fa-google"></i> Gpay
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="payment" value="Phonepe"> 
-                            <i class="fas fa-mobile-alt"></i> Phonepe
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="payment" value="Other"> 
-                            <i class="fas fa-ellipsis-h"></i> Other
+                            <input type="radio" name="payment" value="Credit/Debit Card">
+                            Credit/Debit Card
                         </label>
                     </div>
                 </div>
-
-                <div class="section terms">
-                    <p><i class="fas fa-shield-alt"></i> Your personal details are 💯 % safe with BiteZo.</p>
-                    <p><i class="fas fa-lock"></i> This data will only be shared with our delivery partner and seller to process your order. We never misuse or sell your data.</p>
+                
+                <!-- Coupon Code -->
+                <div class="section">
+                    <h3 class="section-title"><i class="fas fa-tag"></i> Coupon Code</h3>
+                    <p>Have a coupon code? Enter it below to get discounts!</p>
+                    
+                    <div class="coupon-container">
+                        <input type="text" id="coupon" class="form-control" placeholder="Enter coupon code">
+                        <button type="button" class="btn btn-sm" onclick="applyCoupon()">Apply</button>
+                    </div>
+                    
+                    <div id="couponMessage" class="hidden"></div>
                 </div>
-
-                <div class="form-group">
-                    <label class="radio-option">
-                        <input type="checkbox" required> 
-                        <i class="fas fa-check-circle"></i> By submitting this form, you agree to our <a href="#" style="color: var(--primary);">terms & conditions</a>
-                    </label>
+                
+                <!-- Order Summary -->
+                <div class="section">
+                    <h3 class="section-title"><i class="fas fa-receipt"></i> Order Summary</h3>
+                    
+                    <div class="order-summary">
+                        <h3>Your Order</h3>
+                        <div id="orderItems">
+                            <!-- Order items will be added here dynamically -->
+                            <p style="text-align: center; color: var(--gray);">No items selected yet</p>
+                        </div>
+                        <div id="couponDiscount" class="hidden">
+                            <div class="order-item">
+                                <span>Coupon Discount</span>
+                                <span id="discountAmount">-₹0</span>
+                            </div>
+                        </div>
+                        <div id="deliveryCharge" class="order-item">
+                            <span>Delivery Charge</span>
+                            <span>₹0</span>
+                        </div>
+                        <div class="order-total">
+                            <span>Total: </span>
+                            <span id="orderTotal">₹0</span>
+                        </div>
+                    </div>
                 </div>
-
-                <!-- Price Calculation -->
-                <div id="priceCalculation" class="order-summary hidden">
-                    <h3><i class="fas fa-receipt"></i> Order Summary</h3>
-                    <div id="orderItems"></div>
-                    <div id="charges"></div>
-                    <div id="discount"></div>
-                    <div id="totalAmount" class="order-total"></div>
+                
+                <!-- Terms and Submit -->
+                <div class="terms">
+                    <p><input type="checkbox" id="terms" required> I agree to the terms and conditions and privacy policy of BiteZo. I understand that my order will be prepared fresh upon confirmation and may take 15-30 minutes for delivery.</p>
                 </div>
-
-                <!-- Submit Button -->
-                <button type="submit" class="btn btn-secondary" id="submitBtn">
-                    <i class="fab fa-whatsapp"></i> Submit Now via WhatsApp
-                </button>
+                
+                <div style="text-align: center;">
+                    <button type="submit" class="btn btn-secondary">
+                        <i class="fas fa-paper-plane"></i> Place Order via WhatsApp
+                    </button>
+                </div>
             </form>
         </div>
     </div>
-
     
-
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/917002873247" class="floating-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
     <script>
-        // Restaurant coordinates
-        const RESTAURANT_LOCATION = {
-            latitude: 26.703681,
-            longitude: 91.193714
-        };
-        
-        // Used coupon codes (in a real app, this would be stored server-side)
-        const usedCoupons = JSON.parse(localStorage.getItem('usedCoupons') || '[]');
-        
-        // Show/hide order form
+        // Show order form when Order Now button is clicked
         function showOrderForm() {
-            document.getElementById('orderButton').style.display = 'none';
+            document.getElementById('orderButton').classList.add('hidden');
             document.getElementById('orderForm').classList.remove('hidden');
-            // Scroll to form
-            document.getElementById('orderForm').scrollIntoView({ behavior: 'smooth' });
+            window.scrollTo(0, 0);
         }
         
-        // Show specific food category
+        // Show selected food category
         function showFoodCategory(categoryId) {
             // Hide all category contents
-            document.querySelectorAll('.food-category-content').forEach(content => {
+            const contents = document.querySelectorAll('.food-category-content');
+            contents.forEach(content => {
                 content.classList.remove('active');
             });
             
-            // Deactivate all tabs
-            document.querySelectorAll('.food-category-tab').forEach(tab => {
+            // Show selected category
+            document.getElementById(categoryId).classList.add('active');
+            
+            // Update active tab
+            const tabs = document.querySelectorAll('.food-category-tab');
+            tabs.forEach(tab => {
                 tab.classList.remove('active');
             });
             
-            // Show selected category and activate tab
-            document.getElementById(categoryId).classList.add('active');
             event.currentTarget.classList.add('active');
         }
         
-        // Get user's current location
-        function getLocation() {
-            const locationError = document.getElementById('locationError');
-            const locationSuccess = document.getElementById('locationSuccess');
-            const locationBtn = event.currentTarget;
-            const originalBtnText = locationBtn.innerHTML;
-            
-            locationError.classList.add('hidden');
-            locationSuccess.classList.add('hidden');
-            
-            // Show loading spinner
-            locationBtn.innerHTML = '<span class="loading-spinner"></span> Locating...';
-            locationBtn.disabled = true;
-            
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    (position) => {
-                        const userLocation = {
-                            latitude: position.coords.latitude,
-                            longitude: position.coords.longitude
-                        };
-                        
-                        const distance = calculateDistance(RESTAURANT_LOCATION, userLocation);
-                        document.getElementById('customerLocation').value = 
-                            `${userLocation.latitude},${userLocation.longitude}`;
-                        
-                        locationSuccess.textContent = `Location found! Distance: ${distance.toFixed(2)} km`;
-                        locationSuccess.classList.remove('hidden');
-                        
-                        // Update delivery time estimate
-                        updateDeliveryTime(distance);
-                        
-                        // Recalculate prices with new location
-                        calculatePrices();
-                        
-                        // Restore button
-                        locationBtn.innerHTML = originalBtnText;
-                        locationBtn.disabled = false;
-                    },
-                    (error) => {
-                        let errorMessage = "Error getting location: ";
-                        switch(error.code) {
-                            case error.PERMISSION_DENIED:
-                                errorMessage += "User denied the request for Geolocation.";
-                                break;
-                            case error.POSITION_UNAVAILABLE:
-                                errorMessage += "Location information is unavailable.";
-                                break;
-                            case error.TIMEOUT:
-                                errorMessage += "The request to get user location timed out.";
-                                break;
-                            case error.UNKNOWN_ERROR:
-                                errorMessage += "An unknown error occurred.";
-                                break;
-                        }
-                        locationError.textContent = errorMessage;
-                        locationError.classList.remove('hidden');
-                        
-                        // Restore button
-                        locationBtn.innerHTML = originalBtnText;
-                        locationBtn.disabled = false;
-                    },
-                    { timeout: 10000 } // 10 seconds timeout
-                );
-            } else {
-                locationError.textContent = "Geolocation is not supported by this browser.";
-                locationError.classList.remove('hidden');
-                
-                // Restore button
-                locationBtn.innerHTML = originalBtnText;
-                locationBtn.disabled = false;
-            }
-        }
-        
-        // Update delivery time estimate based on distance
-        function updateDeliveryTime(distance) {
-            let baseTime = 30; // minutes
-            if (distance > 1) baseTime += Math.floor(distance * 5);
-            if (baseTime > 45) baseTime = 45;
-            
-            const timerElement = document.getElementById('deliveryTimer');
-            timerElement.textContent = `Delivery in ${baseTime}-${baseTime + 15} mins`;
-        }
-        
-        // Calculate distance between two coordinates in km (Haversine formula)
-        function calculateDistance(coord1, coord2) {
-            const R = 6371; // Earth radius in km
-            const dLat = (coord2.latitude - coord1.latitude) * Math.PI / 180;
-            const dLon = (coord2.longitude - coord1.longitude) * Math.PI / 180;
-            const a = 
-                Math.sin(dLat/2) * Math.sin(dLat/2) +
-                Math.cos(coord1.latitude * Math.PI / 180) * 
-                Math.cos(coord2.latitude * Math.PI / 180) * 
-                Math.sin(dLon/2) * Math.sin(dLon/2);
-            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-            return R * c;
-        }
-        
-        // Calculate delivery fee based on distance
-        function getDeliveryFee(distance) {
-            if (distance <= 1) return 0; // Free within 1km
-            if (distance <= 2) return 6;
-            if (distance <= 3) return 12;
-            if (distance <= 4) return 18;
-            if (distance <= 5) return 24;
-            return 30; // Default for distances >5km
-        }
-        
-        // Calculate packaging fee based on distance
-        function getPackagingFee(distance) {
-            if (distance <= 1) return 2;
-            if (distance <= 2) return 4;
-            if (distance <= 3) return 6;
-            if (distance <= 4) return 8;
-            return 10; // For 4km+ or if distance not available
-        }
-        
-        // Validate coupon code
-        function validateCoupon(code) {
+        // Apply coupon code
+        function applyCoupon() {
+            const couponCode = document.getElementById('coupon').value;
             const couponMessage = document.getElementById('couponMessage');
             
-            if (!code) {
-                couponMessage.textContent = '';
-                couponMessage.className = 'hidden';
-                return { valid: false, discount: 0 };
-            }
-            
-            // Check if coupon was already used
-            if (usedCoupons.includes(code)) {
-                couponMessage.textContent = 'This coupon has already been used.';
+            // Simple coupon validation
+            if (couponCode === 'WELCOME20') {
+                couponMessage.textContent = 'Coupon applied successfully! ₹20 discount added.';
+                couponMessage.className = 'success';
+                couponMessage.classList.remove('hidden');
+                
+                // Show discount in order summary
+                document.getElementById('couponDiscount').classList.remove('hidden');
+                document.getElementById('discountAmount').textContent = '-₹20';
+                
+                // Update total
+                updateOrderSummary();
+            } else if (couponCode === '') {
+                couponMessage.textContent = 'Please enter a coupon code';
                 couponMessage.className = 'error';
-                return { valid: false, discount: 0 };
-            }
-            
-            // Check coupon validity
-            if (['WELCOME20', 'BITEZO20', 'THANK20'].includes(code)) {
-                couponMessage.textContent = '₹20 discount applied!';
-                couponMessage.className = 'success';
-                return { valid: true, discount: 20, oneTime: true };
-            }
-            
-            if (code === 'SPECIAL10') {
-                couponMessage.textContent = '₹10 discount applied!';
-                couponMessage.className = 'success';
-                return { valid: true, discount: 10, oneTime: true };
-            }
-            
-            if (code === 'FREE15') {
-                couponMessage.textContent = '₹15 discount applied!';
-                couponMessage.className = 'success';
-                return { valid: true, discount: 15, oneTime: true };
-            }
-            
-            couponMessage.textContent = 'Invalid coupon code';
-            couponMessage.className = 'error';
-            return { valid: false, discount: 0 };
-        }
-        
-        // Validate coupon code when apply button is clicked
-        function validateCouponCode() {
-            const couponCode = document.getElementById('couponCode').value;
-            validateCoupon(couponCode);
-            calculatePrices();
-        }
-        
-        // Calculate prices
-        function calculatePrices() {
-            // Get location and calculate distance
-            let distance = 0;
-            const locationInput = document.getElementById('customerLocation').value;
-            
-            if (locationInput.includes(',')) {
-                try {
-                    const [lat, lon] = locationInput.split(',').map(Number);
-                    if (!isNaN(lat) && !isNaN(lon)) {
-                        const userLocation = { latitude: lat, longitude: lon };
-                        distance = calculateDistance(RESTAURANT_LOCATION, userLocation);
-                    }
-                } catch (e) {
-                    console.error('Error parsing location:', e);
-                }
-            }
-            
-            // Pizza calculation
-            const pizzaItems = [];
-            document.querySelectorAll('.pizza-size').forEach((select, index) => {
-                const pizzaType = select.options[select.selectedIndex].text;
-                const pizzaSize = select.value;
-                const quantityInput = select.parentElement.querySelector('.pizza-quantity');
-                const quantity = parseInt(quantityInput.value) || 0;
-                
-                if (pizzaSize && quantity > 0) {
-                    let price = 0;
-                    const itemName = select.getAttribute('data-item');
-                    
-                    // Determine price based on item and size
-                    switch(itemName) {
-                        case 'Classic Veggie Pizza':
-                            if (pizzaSize === 'Small') price = 149;
-                            else if (pizzaSize === 'Medium') price = 199;
-                            else if (pizzaSize === 'Large') price = 249;
-                            break;
-                        case 'Spicy Chicken Loaded Pizza':
-                            if (pizzaSize === 'Small') price = 199;
-                            else if (pizzaSize === 'Medium') price = 249;
-                            else if (pizzaSize === 'Large') price = 299;
-                            break;
-                        case 'Eggy Delight Pizza':
-                            if (pizzaSize === 'Small') price = 169;
-                            else if (pizzaSize === 'Medium') price = 219;
-                            else if (pizzaSize === 'Large') price = 269;
-                            break;
-                        case 'Cheesy Paneer Treat Pizza':
-                            if (pizzaSize === 'Small') price = 179;
-                            else if (pizzaSize === 'Medium') price = 229;
-                            else if (pizzaSize === 'Large') price = 279;
-                            break;
-                    }
-                    
-                    if (price > 0) {
-                        pizzaItems.push({
-                            name: `${pizzaSize} ${itemName}`,
-                            quantity: quantity,
-                            price: price * quantity
-                        });
-                    }
-                }
-            });
-            
-            // Momo calculation
-            const momoItems = [];
-            document.querySelectorAll('.momo-plate').forEach((select, index) => {
-                const momoType = select.getAttribute('data-item');
-                const plateType = select.value;
-                const quantityInput = select.parentElement.querySelector('.momo-quantity');
-                const quantity = parseInt(quantityInput.value) || 0;
-                
-                if (plateType && quantity > 0) {
-                    let price = 0;
-                    
-                    // Determine price based on item and plate type
-                    switch(momoType) {
-                        case 'Steamed Veg Momos':
-                            price = plateType === 'Half plate' ? 60 : 120;
-                            break;
-                        case 'Spicy Chicken Momos':
-                            price = plateType === 'Half plate' ? 99 : 198;
-                            break;
-                        case 'Egg Burst Momos':
-                            price = plateType === 'Half plate' ? 79 : 158;
-                            break;
-                        case 'Paneer Stuffed Momos':
-                            price = plateType === 'Half plate' ? 89 : 178;
-                            break;
-                    }
-                    
-                    momoItems.push({
-                        name: `${plateType} ${momoType}`,
-                        quantity: quantity,
-                        price: price * quantity
-                    });
-                }
-            });
-            
-            // Chowmein calculation
-            const chowmeinItems = [];
-            document.querySelectorAll('.chowmein-quantity').forEach((input) => {
-                const quantity = parseInt(input.value) || 0;
-                const itemName = input.getAttribute('data-item');
-                
-                if (quantity > 0) {
-                    let price = 0;
-                    
-                    switch(itemName) {
-                        case 'Street-Style Veg Chowmein': price = 59; break;
-                        case 'Cheesy Paneer Chowmein': price = 79; break;
-                        case 'Egg Fusion Chowmein': price = 69; break;
-                        case 'Desi Chicken Chowmein': price = 89; break;
-                    }
-                    
-                    chowmeinItems.push({
-                        name: itemName,
-                        quantity: quantity,
-                        price: price * quantity
-                    });
-                }
-            });
-            
-            // Rice & Rolls calculation
-            const riceRollItems = [];
-            
-            // Rice items
-            document.querySelectorAll('.rice-quantity').forEach((input) => {
-                const quantity = parseInt(input.value) || 0;
-                const itemName = input.getAttribute('data-item');
-                
-                if (quantity > 0) {
-                    let price = 0;
-                    
-                    switch(itemName) {
-                        case 'Hot Chicken Fried Rice': price = 120; break;
-                    }
-                    
-                    riceRollItems.push({
-                        name: itemName,
-                        quantity: quantity,
-                        price: price * quantity
-                    });
-                }
-            });
-            
-            // Burger items
-            document.querySelectorAll('.burger-quantity').forEach((input) => {
-                const quantity = parseInt(input.value) || 0;
-                const itemName = input.getAttribute('data-item');
-                
-                if (quantity > 0) {
-                    let price = 0;
-                    
-                    switch(itemName) {
-                        case 'BiteZo Special Burger': price = 59; break;
-                    }
-                    
-                    riceRollItems.push({
-                        name: itemName,
-                        quantity: quantity,
-                        price: price * quantity
-                    });
-                }
-            });
-            
-            // Roll items
-            document.querySelectorAll('.roll-quantity').forEach((input) => {
-                const quantity = parseInt(input.value) || 0;
-                const itemName = input.getAttribute('data-item');
-                const minQuantity = parseInt(input.min) || 1;
-                
-                if (quantity >= minQuantity) {
-                    let price = 0;
-                    
-                    switch(itemName) {
-                        case 'Crunchy Veg Roll': price = 40; break;
-                        case 'Spicy Chicken Roll': price = 69; break;
-                        case 'Masala Egg Roll': price = 49; break;
-                        case 'Paneer Wrap Delight': price = 59; break;
-                    }
-                    
-                    riceRollItems.push({
-                        name: itemName,
-                        quantity: quantity,
-                        price: price * quantity
-                    });
-                }
-            });
-            
-            // Combine all items
-            const allItems = [...pizzaItems, ...momoItems, ...chowmeinItems, ...riceRollItems];
-            
-            // Calculate total food price
-            const totalFoodPrice = allItems.reduce((sum, item) => sum + item.price, 0);
-            
-            // Check if minimum order is met
-            if (totalFoodPrice > 0 && totalFoodPrice < 59) {
-                alert('Minimum order amount is ₹59');
-                document.getElementById('priceCalculation').classList.add('hidden');
-                return;
-            }
-            
-            // Calculate packaging fee
-            const packagingFee = getPackagingFee(distance);
-            
-            // Calculate delivery fee
-            let deliveryFee = getDeliveryFee(distance);
-            if (totalFoodPrice >= 249) {
-                deliveryFee = 0; // Free delivery for orders above ₹249
-            }
-            
-            // Validate coupon
-            const couponCode = document.getElementById('couponCode').value;
-            const coupon = validateCoupon(couponCode);
-            let discount = 0;
-            
-            if (coupon.valid) {
-                discount = Math.min(coupon.discount, totalFoodPrice); // Discount can't be more than food price
-            }
-            
-            // Calculate total amount
-            const totalAmount = totalFoodPrice + packagingFee + deliveryFee - discount;
-            
-            // Display order summary
-            const orderItems = document.getElementById('orderItems');
-            orderItems.innerHTML = '';
-            
-            if (allItems.length === 0) {
-                document.getElementById('priceCalculation').classList.add('hidden');
-                return;
-            }
-            
-            allItems.forEach(item => {
-                const itemElement = document.createElement('div');
-                itemElement.className = 'order-item';
-                itemElement.innerHTML = `
-                    <span>${item.quantity}x ${item.name}</span>
-                    <span>₹${item.price}</span>
-                `;
-                orderItems.appendChild(itemElement);
-            });
-            
-            const charges = document.getElementById('charges');
-            charges.innerHTML = `
-                <div class="order-item">
-                    <span>Packaging fee</span>
-                    <span>₹${packagingFee}</span>
-                </div>
-                <div class="order-item">
-                    <span>Delivery fee</span>
-                    <span>₹${deliveryFee}</span>
-                </div>
-            `;
-            
-            const discountElement = document.getElementById('discount');
-            if (discount > 0) {
-                discountElement.innerHTML = `
-                    <div class="order-item">
-                        <span>Discount (${couponCode})</span>
-                        <span>-₹${discount}</span>
-                    </div>
-                `;
-                discountElement.classList.remove('hidden');
+                couponMessage.classList.remove('hidden');
             } else {
-                discountElement.classList.add('hidden');
+                couponMessage.textContent = 'Invalid coupon code';
+                couponMessage.className = 'error';
+                couponMessage.classList.remove('hidden');
             }
-            
-            document.getElementById('totalAmount').innerHTML = `Total amount to be paid: ₹${totalAmount}`;
-            document.getElementById('priceCalculation').classList.remove('hidden');
-            
-            // Scroll to order summary
-            document.getElementById('priceCalculation').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
         
-        // Prepare WhatsApp message
+        // Update order summary
+        function updateOrderSummary() {
+            const orderItemsContainer = document.getElementById('orderItems');
+            let total = 0;
+            
+            // Clear previous items
+            orderItemsContainer.innerHTML = '';
+            
+            // Process pizza items
+            const pizzaItems = document.querySelectorAll('.pizza-size:not([value=""])');
+            pizzaItems.forEach(item => {
+                const quantityInput = item.parentElement.querySelector('.pizza-quantity');
+                const quantity = parseInt(quantityInput.value) || 0;
+                
+                if (quantity > 0) {
+                    const itemName = item.dataset.item;
+                    const size = item.value;
+                    let price = 0;
+                    
+                    // Get price based on size
+                    const priceText = item.closest('.food-details').querySelector('.food-price').textContent;
+                    const priceMatches = priceText.match(/(Small|Medium|Large): ₹(\d+)/g);
+                    
+                    priceMatches.forEach(match => {
+                        if (match.includes(size)) {
+                            price = parseInt(match.split('₹')[1]);
+                        }
+                    });
+                    
+                    const itemTotal = price * quantity;
+                    total += itemTotal;
+                    
+                    // Add to order summary
+                    const orderItem = document.createElement('div');
+                    orderItem.className = 'order-item';
+                    orderItem.innerHTML = `
+                        <span>${itemName} (${size}) × ${quantity}</span>
+                        <span>₹${itemTotal}</span>
+                    `;
+                    orderItemsContainer.appendChild(orderItem);
+                }
+            });
+            
+            // Process momo items
+            const momoItems = document.querySelectorAll('.momo-size:not([value=""])');
+            momoItems.forEach(item => {
+                const quantityInput = item.parentElement.querySelector('.momo-quantity');
+                const quantity = parseInt(quantityInput.value) || 0;
+                
+                if (quantity > 0) {
+                    const itemName = item.dataset.item;
+                    const size = item.value;
+                    let price = 0;
+                    
+                    // Get price based on size
+                    const priceText = item.closest('.food-details').querySelector('.food-price').textContent;
+                    const priceMatches = priceText.match(/(\d+) pcs: ₹(\d+)/g);
+                    
+                    priceMatches.forEach(match => {
+                        if (match.includes(size.split(' ')[0])) {
+                            price = parseInt(match.split('₹')[1]);
+                        }
+                    });
+                    
+                    const itemTotal = price * quantity;
+                    total += itemTotal;
+                    
+                    // Add to order summary
+                    const orderItem = document.createElement('div');
+                    orderItem.className = 'order-item';
+                    orderItem.innerHTML = `
+                        <span>${itemName} (${size}) × ${quantity}</span>
+                        <span>₹${itemTotal}</span>
+                    `;
+                    orderItemsContainer.appendChild(orderItem);
+                }
+            });
+            
+            // Process chowmein items
+            const chowmeinItems = document.querySelectorAll('.chowmein-size:not([value=""])');
+            chowmeinItems.forEach(item => {
+                const quantityInput = item.parentElement.querySelector('.chowmein-quantity');
+                const quantity = parseInt(quantityInput.value) || 0;
+                
+                if (quantity > 0) {
+                    const itemName = item.dataset.item;
+                    const size = item.value;
+                    let price = 0;
+                    
+                    // Get price based on size
+                    const priceText = item.closest('.food-details').querySelector('.food-price').textContent;
+                    const priceMatches = priceText.match(/(Half|Full): ₹(\d+)/g);
+                    
+                    priceMatches.forEach(match => {
+                        if (match.includes(size)) {
+                            price = parseInt(match.split('₹')[1]);
+                        }
+                    });
+                    
+                    const itemTotal = price * quantity;
+                    total += itemTotal;
+                    
+                    // Add to order summary
+                    const orderItem = document.createElement('div');
+                    orderItem.className = 'order-item';
+                    orderItem.innerHTML = `
+                        <span>${itemName} (${size}) × ${quantity}</span>
+                        <span>₹${itemTotal}</span>
+                    `;
+                    orderItemsContainer.appendChild(orderItem);
+                }
+            });
+            
+            // Process rice & rolls items
+            const riceRollItems = document.querySelectorAll('.rice-size:not([value=""]), .roll-size:not([value=""])');
+            riceRollItems.forEach(item => {
+                const quantityInput = item.parentElement.querySelector('.rice-quantity') || 
+                                    item.parentElement.querySelector('.roll-quantity');
+                const quantity = parseInt(quantityInput.value) || 0;
+                
+                if (quantity > 0) {
+                    const itemName = item.dataset.item;
+                    const size = item.value;
+                    let price = 0;
+                    
+                    // Get price based on size
+                    const priceText = item.closest('.food-details').querySelector('.food-price').textContent;
+                    const priceMatches = priceText.match(/(Half|Full|Single|Double): ₹(\d+)/g);
+                    
+                    priceMatches.forEach(match => {
+                        if (match.includes(size)) {
+                            price = parseInt(match.split('₹')[1]);
+                        }
+                    });
+                    
+                    const itemTotal = price * quantity;
+                    total += itemTotal;
+                    
+                    // Add to order summary
+                    const orderItem = document.createElement('div');
+                    orderItem.className = 'order-item';
+                    orderItem.innerHTML = `
+                        <span>${itemName} (${size}) × ${quantity}</span>
+                        <span>₹${itemTotal}</span>
+                    `;
+                    orderItemsContainer.appendChild(orderItem);
+                }
+            });
+            
+            // If no items selected
+            if (orderItemsContainer.children.length === 0) {
+                const emptyMessage = document.createElement('p');
+                emptyMessage.style.textAlign = 'center';
+                emptyMessage.style.color = 'var(--gray)';
+                emptyMessage.textContent = 'No items selected yet';
+                orderItemsContainer.appendChild(emptyMessage);
+            }
+            
+            // Apply coupon discount if any
+            const couponApplied = !document.getElementById('couponDiscount').classList.contains('hidden');
+            if (couponApplied) {
+                total = Math.max(0, total - 20); // Apply ₹20 discount
+            }
+            
+            // Add delivery charge for orders below ₹249
+            let deliveryCharge = 0;
+            if (total > 0 && total < 249) {
+                deliveryCharge = 30;
+                document.getElementById('deliveryCharge').innerHTML = `
+                    <span>Delivery Charge</span>
+                    <span>₹${deliveryCharge}</span>
+                `;
+            } else {
+                document.getElementById('deliveryCharge').innerHTML = `
+                    <span>Delivery Charge</span>
+                    <span>₹0</span>
+                `;
+            }
+            
+            // Update total
+            document.getElementById('orderTotal').textContent = `₹${total + deliveryCharge}`;
+        }
+        
+        // Prepare WhatsApp message with order details
         function prepareWhatsAppMessage(event) {
             event.preventDefault();
-            calculatePrices();
             
-            // Check if there are any items in the order
-            const allItems = document.querySelectorAll('.order-item');
-            if (allItems.length === 0) {
-                alert('Please add at least one item to your order');
+            // Validate form
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            
+            if (!name || !phone || !address) {
+                alert('Please fill in all required fields');
                 return;
             }
             
-            // Show loading state on submit button
-            const submitBtn = document.getElementById('submitBtn');
-            const originalBtnText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<span class="loading-spinner"></span> Preparing order...';
-            submitBtn.disabled = true;
+            // Build order message
+            let message = `*NEW ORDER - BiteZo*%0A%0A`;
+            message += `*Customer Name:* ${name}%0A`;
+            message += `*Phone:* ${phone}%0A`;
             
-            // Generate order ID
-            const now = new Date();
-            const orderId = `BZ-${now.getFullYear()}${String(now.getMonth()+1).padStart(2,'0')}${String(now.getDate()).padStart(2,'0')}-${String(Math.floor(Math.random() * 10000)).padStart(4,'0')}`;
-            
-            // Get form values
-            const referral = document.querySelector('select').value || 'Not specified';
-            const email = document.querySelector('input[type="email"]').value || 'Not provided';
-            const name = document.getElementById('customerName').value;
-            const phone = document.getElementById('customerPhone').value;
-            const location = document.getElementById('customerLocation').value;
-            const couponCode = document.getElementById('couponCode').value || 'None';
-            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
-            
-            // Get order items and total
-            const orderItems = document.getElementById('orderItems').innerText;
-            const charges = document.getElementById('charges').innerText;
-            const discount = document.getElementById('discount').innerText;
-            const totalAmount = document.getElementById('totalAmount').innerText;
-            
-            // Create WhatsApp message
-            const message = `*New Order from BiteZo Website*%0A%0A` +
-                           `*Order ID:* ${orderId}%0A%0A` +
-                           `*Customer Details:*%0A` +
-                           `Name: ${name}%0A` +
-                           `Phone: ${phone}%0A` +
-                           `Location: ${location}%0A` +
-                           `Email: ${email}%0A` +
-                           `How they heard about us: ${referral}%0A%0A` +
-                           `*Order Details:*%0A${orderItems.replace(/\n/g, '%0A')}%0A` +
-                           `${charges.replace(/\n/g, '%0A')}%0A` +
-                           `${discount.replace(/\n/g, '%0A')}%0A` +
-                           `*${totalAmount}*%0A%0A` +
-                           `*Payment Information:*%0A` +
-                           `Payment Method: ${paymentMethod}%0A` +
-                           `Coupon Code: ${couponCode}%0A%0A` +
-                           `*Note:* This order was placed through the website form.`;
-            
-            // Mark coupon as used if valid
-            const coupon = validateCoupon(couponCode);
-            if (coupon.valid && coupon.oneTime) {
-                usedCoupons.push(couponCode);
-                localStorage.setItem('usedCoupons', JSON.stringify(usedCoupons));
+            const email = document.getElementById('email').value;
+            if (email) {
+                message += `*Email:* ${email}%0A`;
             }
             
-            // Open WhatsApp with pre-filled message after a small delay
-            setTimeout(() => {
-                window.open(`https://wa.me/917002873247?text=${message}`, '_blank');
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.disabled = false;
-            }, 1000);
+            message += `%0A*Delivery Address:*%0A${address}%0A%0A`;
+            
+            const instructions = document.getElementById('instructions').value;
+            if (instructions) {
+                message += `*Special Instructions:*%0A${instructions}%0A%0A`;
+            }
+            
+            // Add order items
+            message += `*Order Items:*%0A`;
+            
+            const orderItems = document.getElementById('orderItems').querySelectorAll('.order-item');
+            if (orderItems.length === 0) {
+                alert('Please select at least one item');
+                return;
+            }
+            
+            orderItems.forEach(item => {
+                const itemText = item.textContent.trim();
+                message += `- ${itemText}%0A`;
+            });
+            
+            // Add payment method
+            const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+            message += `%0A*Payment Method:* ${paymentMethod}%0A`;
+            
+            // Add total
+            const total = document.getElementById('orderTotal').textContent;
+            message += `*Total Amount:* ${total}%0A`;
+            
+            // Add coupon if applied
+            const couponApplied = !document.getElementById('couponDiscount').classList.contains('hidden');
+            if (couponApplied) {
+                const couponCode = document.getElementById('coupon').value;
+                message += `*Coupon Applied:* ${couponCode} (₹20 discount)%0A`;
+            }
+            
+            // Open WhatsApp with the message
+            window.open(`https://wa.me/917002873247?text=${message}`, '_blank');
         }
         
-        // Add event listeners for price calculation
-        document.querySelectorAll('select, input').forEach(element => {
-            element.addEventListener('change', calculatePrices);
-            element.addEventListener('input', calculatePrices);
+        // Update order summary when any input changes
+        document.addEventListener('change', function(event) {
+            if (event.target.classList.contains('pizza-size') || 
+                event.target.classList.contains('pizza-quantity') ||
+                event.target.classList.contains('momo-size') ||
+                event.target.classList.contains('momo-quantity') ||
+                event.target.classList.contains('chowmein-size') ||
+                event.target.classList.contains('chowmein-quantity') ||
+                event.target.classList.contains('rice-size') ||
+                event.target.classList.contains('rice-quantity') ||
+                event.target.classList.contains('roll-size') ||
+                event.target.classList.contains('roll-quantity')) {
+                updateOrderSummary();
+            }
         });
         
-        // Initialize by hiding the price calculation
-        document.getElementById('priceCalculation').classList.add('hidden');
+        // Validate phone number
+        document.getElementById('phone').addEventListener('input', function() {
+            const phone = this.value;
+            const errorElement = document.getElementById('phoneError');
+            
+            if (phone.length > 10) {
+                this.value = phone.slice(0, 10);
+            }
+            
+            if (!/^\d*$/.test(phone)) {
+                errorElement.textContent = 'Only numbers allowed';
+            } else if (phone.length < 10) {
+                errorElement.textContent = '10 digits required';
+            } else {
+                errorElement.textContent = '';
+            }
+        });
         
-        // Add animation to food items when they come into view
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
+        // Validate name
+        document.getElementById('name').addEventListener('input', function() {
+            const name = this.value;
+            const errorElement = document.getElementById('nameError');
+            
+            if (name.length < 3) {
+                errorElement.textContent = 'Minimum 3 characters';
+            } else {
+                errorElement.textContent = '';
+            }
+        });
         
-        document.querySelectorAll('.food-item').forEach(item => {
-            observer.observe(item);
+        // Validate address
+        document.getElementById('address').addEventListener('input', function() {
+            const address = this.value;
+            const errorElement = document.getElementById('addressError');
+            
+            if (address.length < 10) {
+                errorElement.textContent = 'Please provide complete address';
+            } else {
+                errorElement.textContent = '';
+            }
         });
     </script>
 </body>
-                      </html>
+    </html>
